@@ -1,7 +1,7 @@
 import sys
 from random import randint
 import timeit
-from SortAssistant import QuickSort_2_way
+from SortHandler import *
 
 def IsSmall(a, b):
     return a < b
@@ -16,7 +16,8 @@ def main():
             params=[randint(-number,number) for x in range(number)]
             print(params)
             print("\n")
-            QuickSort_2_way(params, IsBig)
+            sortHandler = SortHandler() 
+            sortHandler.QuickSort2(params, IsBig)
             print(params)
     except:
             print("Unexpected error:")
