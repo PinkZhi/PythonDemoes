@@ -70,3 +70,43 @@ class SortHandler:
     def QuickSort3(self, array, compareFunc):
         self._QuickSort3(array, 0, len(array) - 1, compareFunc)
         return
+
+    def _Merge(self, array1, array2, compareFunc):
+        ret = []
+        i = 0
+        j = 0
+        l1 = len(array1)
+        l2 = len(array2)
+        while i < l1 and j < l2:
+            if compareFunc(array1[i], array2[j]):
+                ret.append(array1[i])
+                i += 1
+            else:
+                ret.append(array2[j])
+                j += 1
+
+        if i == l1:
+            for h in array2[j:]:
+                ret.append(h)
+        else:
+            for h in array1[i:]:
+                ret.append(h)
+
+        return ret
+    
+    """
+    归并排序先将数组分区指导数组只剩1个元素，再将分好后的数组排序并合并
+    """
+    def _Partion(self, array, compareFunc):
+        lenth = len(array)
+        if lenth <= 1:
+            return array
+
+        middle = lenth // 2
+        leftArray = self._Partion(array[:middle], compareFunc)
+        rightArray = self._Partion(array[middle:], compareFunc)
+        return self._Merge(leftArray, rightArray, compareFunc)                                                 
+    
+    def MergeSort(self, array, compareFunc):
+        array = self._Partion(array, compareFunc)
+        return

@@ -26,7 +26,8 @@ def main():
             print("\n")
             sortHandler = SortHandler() 
             #sortHandler.QuickSort2(params, IsBig)
-            sortHandler.QuickSort3(params, Compare)
+            #sortHandler.QuickSort3(params, Compare)
+            sortHandler.MergeSort(params, IsBig)
             print(params)
     except:
             print("Unexpected error:")
